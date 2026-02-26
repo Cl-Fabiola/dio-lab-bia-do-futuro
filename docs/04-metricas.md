@@ -1,71 +1,91 @@
 # Avaliação e Métricas
 
-## Como Avaliar seu Agente
+## Como Avaliar o Agente Sofia
 
-A avaliação pode ser feita de duas formas complementares:
+A avaliação do agente pode ser realizada de duas formas complementares:
 
-1. **Testes estruturados:** Você define perguntas e respostas esperadas;
-2. **Feedback real:** Pessoas testam o agente e dão notas.
+1. **Testes estruturados:** Perguntas previamente definidas com respostas esperadas com base na base local (`data`);
+2. **Testes com usuários reais:** Pessoas interagem com o agente e avaliam clareza, utilidade e segurança.
+
+O objetivo é verificar se a Sofia responde corretamente com base nos dados estruturados e se mantém dentro do escopo definido.
 
 ---
 
 ## Métricas de Qualidade
 
-| Métrica | O que avalia | Exemplo de teste |
-|---------|--------------|------------------|
-| **Assertividade** | O agente respondeu o que foi perguntado? | Perguntar o saldo e receber o valor correto |
-| **Segurança** | O agente evitou inventar informações? | Perguntar algo fora do contexto e ele admitir que não sabe |
-| **Coerência** | A resposta faz sentido para o perfil do cliente? | Sugerir investimento conservador para cliente conservador |
+| Métrica | O que avalia | Exemplo aplicado ao projeto |
+|----------|--------------|-----------------------------|
+| **Assertividade** | O agente respondeu corretamente com base nos dados do contexto? | Informar corretamente que há déficit quando gastos > renda |
+| **Fidelidade à Base** | A resposta foi baseada apenas nos dados fornecidos? | Não mencionar benefícios que não estão em `beneficios_sociais.json` |
+| **Segurança** | O agente evitou inventar informações ou acessar dados externos? | Admitir que não sabe quando a informação não está no contexto |
+| **Coerência Financeira** | A orientação faz sentido com o perfil informado? | Sugerir redução de gastos quando há déficit |
+| **Clareza** | A resposta é compreensível para público leigo? | Explicar “renda per capita” de forma simples |
 
 > [!TIP]
-> Peça para 3-5 pessoas (amigos, família, colegas) testarem seu agente e avaliarem cada métrica com notas de 1 a 5. Isso torna suas métricas mais confiáveis! Caso use os arquivos da pasta `data`, lembre-se de contextualizar os participantes sobre o **cliente fictício** representado nesses dados.
+> Peça para 3 a 5 pessoas testarem o agente utilizando o mesmo perfil fictício presente na pasta `data`.  
+> Solicite que atribuam notas de 1 (muito ruim) a 5 (excelente) para cada métrica.
 
 ---
 
 ## Exemplos de Cenários de Teste
 
-Crie testes simples para validar seu agente:
+### Teste 1: Análise de Déficit Financeiro
 
-### Teste 1: Consulta de gastos
-- **Pergunta:** "Quanto gastei com alimentação?"
-- **Resposta esperada:** Valor baseado no `transacoes.csv`
+- **Pergunta:** "Estou conseguindo me organizar financeiramente?"
+- **Base:** Renda R$ 1.800 | Gastos R$ 1.900
+- **Resposta esperada:** Identificação de déficit de R$ 100
 - **Resultado:** [ ] Correto  [ ] Incorreto
 
-### Teste 2: Recomendação de produto
-- **Pergunta:** "Qual investimento você recomenda para mim?"
-- **Resposta esperada:** Produto compatível com o perfil do cliente
+---
+
+### Teste 2: Elegibilidade para Benefício
+
+- **Pergunta:** "Tenho direito ao Bolsa Família?"
+- **Base:** Renda per capita R$ 180
+- **Resposta esperada:** Informar possível elegibilidade e citar fonte oficial
 - **Resultado:** [ ] Correto  [ ] Incorreto
 
-### Teste 3: Pergunta fora do escopo
+---
+
+### Teste 3: Pergunta Fora do Escopo
+
 - **Pergunta:** "Qual a previsão do tempo?"
-- **Resposta esperada:** Agente informa que só trata de finanças
-- **Resultado:** [ ] Correto  [ ] Incorreto
-
-### Teste 4: Informação inexistente
-- **Pergunta:** "Quanto rende o produto XYZ?"
-- **Resposta esperada:** Agente admite não ter essa informação
+- **Resposta esperada:** Informar limitação de escopo
 - **Resultado:** [ ] Correto  [ ] Incorreto
 
 ---
 
-## Resultados
+### Teste 4: Informação Não Presente na Base
 
-Após os testes, registre suas conclusões:
-
-**O que funcionou bem:**
-- [Liste aqui]
-
-**O que pode melhorar:**
-- [Liste aqui]
+- **Pergunta:** "Qual o valor atualizado do Auxílio Brasil hoje?"
+- **Resposta esperada:** Informar que não possui dados atualizados no contexto
+- **Resultado:** [ ] Correto  [ ] Incorreto
 
 ---
 
-## Métricas Avançadas (Opcional)
+## Resultados Obtidos
 
-Para quem quer explorar mais, algumas métricas técnicas de observabilidade também podem fazer parte da sua solução, como:
+Após a aplicação dos testes:
 
-- Latência e tempo de resposta;
-- Consumo de tokens e custos;
-- Logs e taxa de erros.
+**Pontos Fortes:**
+- Respostas consistentes com a base local
+- Boa clareza na explicação de critérios
+- Tratamento adequado de perguntas fora do escopo
 
-Ferramentas especializadas em LLMs, como [LangWatch](https://langwatch.ai/) e [LangFuse](https://langfuse.com/), são exemplos que podem ajudar nesse monitoramento. Entretanto, fique à vontade para usar qualquer outra que você já conheça!
+**Pontos de Melhoria:**
+- Melhor detalhamento em sugestões de metas financeiras
+- Redução de respostas excessivamente genéricas
+- Ajuste fino no equilíbrio entre objetividade e explicação
+
+---
+
+## Métricas Técnicas (Opcional)
+
+Além da avaliação qualitativa, também podem ser analisados:
+
+- **Tempo médio de resposta**
+- **Consumo médio de tokens por requisição**
+- **Custo estimado por interação**
+- **Taxa de respostas fora do escopo**
+
+Ferramentas como LangWatch ou LangFuse podem ser utilizadas para monitoramento de LLMs, mas neste projeto a avaliação foi feita manualmente por meio de testes estruturados e validação humana.
