@@ -58,13 +58,12 @@ flowchart TD
 
 ### Componentes
 
-| Componente | Descrição |
-|------------|-----------|
-| Interface | [ex: Chatbot em Streamlit integrado ao navegador] |
-| LLM | [ex: GPT-4 via API] |
-| Base de Conhecimento | [ex: JSON/CSV com dados do cliente e tabelas de benefícios sociais] |
-| Validação | [ex: Regras de Checagem para evitar e garantir que respostas sejam baseadas em dados reais] |
-
+| Componente           | Descrição |
+|----------------------|-----------|
+| Interface            | Chatbot em [Streamlit](https://streamlit.io/) integrado ao navegador |
+| LLM                  | Ollama (plataforma gratuita para rodar modelos locais) |
+| Base de Conhecimento | JSON/CSV com dados mockados na pasta `data` fornecidos pelo professor e tabelas de benefícios sociais |
+| Validação            | Regras de checagem para evitar alucinações e garantir que respostas sejam baseadas em dados reais |
 ---
 
 ## Segurança e Anti-Alucinação
@@ -74,9 +73,8 @@ flowchart TD
 - ✅ Agente só responde com base nos dados fornecidos
 - ✅ Respostas incluem fonte da informação (ex: link oficial de benefício social)
 - ✅ Quando não sabe, admite e redireciona para canais oficiais
-- ✅ Não faz recomendações de investimento sem perfil do cliente
-- ✅ Não faz recomendações de investimentos específicos.
-- ✅ Não acessa dados bancarios sensíveis (como senhas).
+- ✅ Não faz recomendações de investimentos sem perfil do cliente e não sugere opções específicas.
+- ✅ Não acessa dados bancários sensíveis (como senhas).
 - ✅ Não substitui um profissional certificado. 
 
 
