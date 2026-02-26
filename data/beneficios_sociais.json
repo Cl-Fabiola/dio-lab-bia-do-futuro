@@ -2,20 +2,27 @@
   "beneficios_sociais": [
     {
       "nome": "Bolsa Família",
-      "criterios": "Renda per capita até R$ 218",
-      "descricao": "Programa de transferência de renda para famílias em situação de pobreza e extrema pobreza.",
+      "tipo": "Programa de Transferência de Renda",
+      "renda_per_capita_max": 218,
+      "publico_alvo": "Famílias em situação de pobreza ou extrema pobreza inscritas no CadÚnico",
+      "descricao": "Programa federal de transferência de renda destinado a famílias em situação de vulnerabilidade social.",
       "fonte": "https://www.gov.br/mds/pt-br/assuntos/bolsa-familia"
     },
     {
       "nome": "Auxílio Transporte",
-      "criterios": "Disponível para trabalhadores com carteira assinada que utilizam transporte público",
-      "descricao": "Benefício que ajuda a custear o deslocamento entre casa e trabalho.",
+      "tipo": "Benefício Trabalhista",
+      "vinculo_formal_obrigatorio": true,
+      "publico_alvo": "Trabalhadores com carteira assinada que utilizam transporte público",
+      "descricao": "Benefício previsto na legislação trabalhista que auxilia no custeio do deslocamento entre residência e trabalho.",
       "fonte": "https://www.gov.br/pt-br/servicos/auxilio-transporte"
     },
     {
       "nome": "Benefício de Prestação Continuada (BPC)",
-      "criterios": "Idosos acima de 65 anos ou pessoas com deficiência de baixa renda",
-      "descricao": "Garante um salário mínimo mensal para pessoas que não podem se sustentar.",
+      "tipo": "Assistência Social",
+      "renda_per_capita_max": 353,
+      "idade_minima": 65,
+      "publico_alvo": "Idosos ou pessoas com deficiência em situação de baixa renda",
+      "descricao": "Benefício assistencial que garante um salário mínimo mensal à pessoa idosa ou com deficiência que comprove não possuir meios de prover a própria manutenção.",
       "fonte": "https://www.gov.br/mds/pt-br/assuntos/assistencia-social/bpc"
     }
   ]
