@@ -1,0 +1,22 @@
+{
+  "beneficios_sociais": [
+    {
+      "nome": "Bolsa Família",
+      "criterios": "Renda per capita até R$ 218",
+      "descricao": "Programa de transferência de renda para famílias em situação de pobreza e extrema pobreza.",
+      "fonte": "https://www.gov.br/mds/pt-br/assuntos/bolsa-familia"
+    },
+    {
+      "nome": "Auxílio Transporte",
+      "criterios": "Disponível para trabalhadores com carteira assinada que utilizam transporte público",
+      "descricao": "Benefício que ajuda a custear o deslocamento entre casa e trabalho.",
+      "fonte": "https://www.gov.br/pt-br/servicos/auxilio-transporte"
+    },
+    {
+      "nome": "Benefício de Prestação Continuada (BPC)",
+      "criterios": "Idosos acima de 65 anos ou pessoas com deficiência de baixa renda",
+      "descricao": "Garante um salário mínimo mensal para pessoas que não podem se sustentar.",
+      "fonte": "https://www.gov.br/mds/pt-br/assuntos/assistencia-social/bpc"
+    }
+  ]
+}
